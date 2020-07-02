@@ -1,0 +1,49 @@
+<mat-vertical-stepper #stepper>
+  <mat-step [stepControl]="firstFormGroup">
+    <form [formGroup]="firstFormGroup">
+      <ng-template matStepLabel>Add Header</ng-template>
+      <mat-form-field>
+        <mat-label>Note Header</mat-label>
+        <input matInput placeholder="name" formControlName="header" required />
+      </mat-form-field>
+      <div>
+        <button mat-raised-button matStepperNext class="on-hover">Next</button>
+      </div>
+    </form>
+  </mat-step>
+  <mat-step [stepControl]="secondFormGroup">
+    <form [formGroup]="secondFormGroup">
+      <ng-template matStepLabel>Add Content</ng-template>
+      <mat-form-field>
+        <mat-label>Note Contents</mat-label>
+        <input
+          matInput
+          formControlName="content"
+          placeholder="contents"
+          required
+        />
+      </mat-form-field>
+      <div>
+        <button mat-raised-button matStepperPrevious class="on-hover">
+          Back
+        </button>
+        &nbsp;&nbsp;
+        <button mat-raised-button matStepperNext class="on-hover">Next</button>
+      </div>
+    </form>
+  </mat-step>
+  <mat-step>
+    <ng-template matStepLabel>Add Note</ng-template>
+    <p>Click save to add note</p>
+    <div>
+      <button mat-raised-button (click)="stepper.reset()" class="on-hover">
+        Reset</button
+      >&nbsp;&nbsp;
+      <button mat-raised-button color="primary" class="on-save">
+        Save
+      </button>
+    </div>
+  </mat-step>
+</mat-vertical-stepper>
+
+<router-outlet></router-outlet>

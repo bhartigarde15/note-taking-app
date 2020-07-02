@@ -1,0 +1,23 @@
+<mat-toolbar class="color-tool">
+  <span>Note-Taking</span>
+  <nav mat-tab-nav-bar [backgroundColor]="background">
+    <a
+      mat-tab-link
+      *ngFor="let link of links"
+      (click)="activeLink = link"
+      [active]="activeLink == link"
+    >
+      {{ link }}
+    </a>
+    <a mat-tab-link disabled>Disabled Link</a>
+  </nav>
+</mat-toolbar>
+
+<div *ngIf="activeLink == 'Home'">
+  <app-home></app-home>
+</div>
+<div *ngIf="activeLink == 'Create'">
+  <app-create></app-create>
+</div>
+
+<router-outlet></router-outlet>
