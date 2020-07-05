@@ -23,11 +23,26 @@ import { AngularFireDatabase } from '@angular/fire/database';
 import { AngularFireDatabaseModule } from '@angular/fire/database';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { MatButtonModule } from '@angular/material/button';
-
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { MatDialogModule } from '@angular/material/dialog';
+import { FormsModule } from '@angular/forms';
+import { MatGridListModule } from '@angular/material/grid-list';
+import { NoteColorComponent } from './note-color/note-color.component';
+import { MatSelectModule } from '@angular/material/select';
+import { EditNoteComponent } from './edit-note/edit-note.component';
+import { MatRippleModule } from '@angular/material/core';
+import { CommonModule } from '@angular/common';
 // import {} from '@angular/material/form-field';
 
 @NgModule({
-  declarations: [AppComponent, HomeComponent, CreateComponent],
+  declarations: [
+    AppComponent,
+    HomeComponent,
+    CreateComponent,
+
+    NoteColorComponent,
+    EditNoteComponent,
+  ],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -44,6 +59,13 @@ import { MatButtonModule } from '@angular/material/button';
     ReactiveFormsModule,
     MatInputModule,
     MatButtonModule,
+    MatSnackBarModule,
+    MatDialogModule,
+    FormsModule,
+    MatGridListModule,
+    MatSelectModule,
+    MatRippleModule,
+    CommonModule,
 
     AngularFirestoreModule, // imports firebase/firestore, only needed for database features
     AngularFireModule.initializeApp({

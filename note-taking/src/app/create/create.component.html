@@ -1,9 +1,9 @@
 <mat-vertical-stepper #stepper>
   <mat-step [stepControl]="firstFormGroup">
     <form [formGroup]="firstFormGroup">
-      <ng-template matStepLabel>Add Header</ng-template>
+      <ng-template matStepLabel>Add Title</ng-template>
       <mat-form-field>
-        <mat-label>Note Header</mat-label>
+        <mat-label>Note Title</mat-label>
         <input matInput placeholder="name" formControlName="header" required />
       </mat-form-field>
       <div>
@@ -16,12 +16,12 @@
       <ng-template matStepLabel>Add Content</ng-template>
       <mat-form-field>
         <mat-label>Note Contents</mat-label>
-        <input
+        <textarea
           matInput
           formControlName="content"
           placeholder="contents"
           required
-        />
+        ></textarea>
       </mat-form-field>
       <div>
         <button mat-raised-button matStepperPrevious class="on-hover">
@@ -39,7 +39,14 @@
       <button mat-raised-button (click)="stepper.reset()" class="on-hover">
         Reset</button
       >&nbsp;&nbsp;
-      <button mat-raised-button color="primary" class="on-save">
+
+      <button
+        [disabled]="isSave"
+        mat-raised-button
+        color="primary"
+        class="on-save"
+        (click)="saveNote()"
+      >
         Save
       </button>
     </div>
