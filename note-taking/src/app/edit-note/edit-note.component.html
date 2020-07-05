@@ -1,0 +1,39 @@
+<div *ngIf="onButtonClick === true; else editPage"><app-home></app-home></div>
+
+<ng-template #editPage>
+  <button class="back-button" (click)="onBack()">
+    <mat-icon class="back-icon">arrow_back</mat-icon>
+  </button>
+
+  <h1>Edit Note</h1>
+  <div *ngFor="let t of temp">
+    <div *ngIf="t.key === key">
+      <mat-card class="card" [style.background-color]="t.payload.val().color">
+        <mat-card-title
+          contenteditable="true"
+          [textContent]="t.payload.val().title"
+          (input)="title = $event.target.textContent"
+          class="edit-title"
+          ngDefaultControl
+        >
+        </mat-card-title>
+
+        <mat-divider></mat-divider>
+        <mat-card-content
+          contenteditable="true"
+          [textContent]="t.payload.val().content"
+          (input)="content = $event.target.textContent"
+          class="edit-title"
+          ngDefaultControl
+        >
+          {{ t.payload.val().content }}
+        </mat-card-content>
+        <mat-card-footer class="footer">
+          <button (click)="onUpdate(t.key)">
+            <mat-icon class="save-icon">save</mat-icon>
+          </button>
+        </mat-card-footer>
+      </mat-card>
+    </div>
+  </div>
+</ng-template>

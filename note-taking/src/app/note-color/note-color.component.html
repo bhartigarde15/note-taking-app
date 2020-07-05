@@ -1,0 +1,24 @@
+<h1 mat-dialog-title>Set Color</h1>
+<mat-form-field appearance="fill">
+  <mat-label>Colors</mat-label>
+  <mat-select (selectionChange)="selected($event)">
+    <mat-option
+      *ngFor="let color of colors"
+      [value]="color.value"
+      ngDefaultControl
+    >
+      {{ color.viewValue }}
+    </mat-option>
+  </mat-select>
+</mat-form-field>
+<div mat-dialog-actions>
+  <button mat-button (click)="onNoClick()">Cancel</button>
+  <button
+    mat-button
+    [mat-dialog-close]="data"
+    (click)="updateColor()"
+    cdkFocusInitial
+  >
+    Save
+  </button>
+</div>
