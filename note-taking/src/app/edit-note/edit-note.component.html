@@ -1,7 +1,7 @@
 <div *ngIf="onButtonClick === true; else editPage"><app-home></app-home></div>
 
 <ng-template #editPage>
-  <button class="back-button" (click)="onBack()">
+  <button class="back-button" (click)="onBack()" matTooltip="Back">
     <mat-icon class="back-icon">arrow_back</mat-icon>
   </button>
 
@@ -29,7 +29,7 @@
           {{ t.payload.val().content }}
         </mat-card-content>
         <mat-card-footer class="footer">
-          <button (click)="onUpdate(t.key)">
+          <button (click)="onUpdate(t.key)" matTooltip="Save">
             <mat-icon class="save-icon">save</mat-icon>
           </button>
         </mat-card-footer>

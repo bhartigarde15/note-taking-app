@@ -19,6 +19,7 @@
 
         <button
           mat-button
+          matTooltip="Set Color"
           class="color-button"
           (click)="setBackgroundColor(recent.payload.key)"
         >
@@ -27,12 +28,14 @@
         <button
           mat-button
           class="edit-button"
+          matTooltip="Edit Note"
           (click)="editNote(recent.payload.key)"
         >
           <mat-icon class="edit-icon">edit</mat-icon>
         </button>
         <button
           mat-button
+          matTooltip="Delete Note"
           class="delete-button"
           (click)="deleteNote(recent.payload.key)"
         >
@@ -59,6 +62,7 @@
         <button
           mat-button
           class="color-button"
+          matTooltip="Set Color"
           (click)="setBackgroundColor(t.payload.key)"
         >
           <mat-icon class="color-icon">palette</mat-icon>
@@ -66,6 +70,7 @@
         <button
           mat-button
           class="edit-button"
+          matTooltip="Edit Note"
           (click)="editNote(t.payload.key)"
         >
           <mat-icon class="edit-icon">edit</mat-icon>
@@ -73,6 +78,7 @@
         <button
           mat-button
           class="delete-button"
+          matTooltip="Delete Note"
           (click)="deleteNote(t.payload.key)"
         >
           <mat-icon class="delete-icon">delete</mat-icon>

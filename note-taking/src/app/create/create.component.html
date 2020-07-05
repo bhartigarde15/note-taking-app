@@ -36,7 +36,12 @@
     <ng-template matStepLabel>Add Note</ng-template>
     <p>Click save to add note</p>
     <div>
-      <button mat-raised-button (click)="stepper.reset()" class="on-hover">
+      <button
+        mat-raised-button
+        (click)="stepper.reset()"
+        class="on-hover"
+        matTooltip="Reset"
+      >
         Reset</button
       >&nbsp;&nbsp;
 
@@ -46,6 +51,7 @@
         color="primary"
         class="on-save"
         (click)="saveNote()"
+        matTooltip="Save Note"
       >
         Save
       </button>

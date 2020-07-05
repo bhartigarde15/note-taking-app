@@ -32,6 +32,8 @@ import { MatSelectModule } from '@angular/material/select';
 import { EditNoteComponent } from './edit-note/edit-note.component';
 import { MatRippleModule } from '@angular/material/core';
 import { CommonModule } from '@angular/common';
+import { MatTooltipModule } from '@angular/material/tooltip';
+
 // import {} from '@angular/material/form-field';
 
 @NgModule({
@@ -66,6 +68,7 @@ import { CommonModule } from '@angular/common';
     MatSelectModule,
     MatRippleModule,
     CommonModule,
+    MatTooltipModule,
 
     AngularFirestoreModule, // imports firebase/firestore, only needed for database features
     AngularFireModule.initializeApp({
