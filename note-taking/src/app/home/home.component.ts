@@ -1,20 +1,10 @@
 import { NoteColorComponent } from './../note-color/note-color.component';
-import {
-  Component,
-  OnInit,
-  ViewChild,
-  ViewChildDecorator,
-  ElementRef,
-} from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { AngularFireDatabase } from '@angular/fire/database';
 import { Router } from '@angular/router';
 import { MatSnackBar } from '@angular/material/snack-bar';
 
-import {
-  MatDialog,
-  MatDialogRef,
-  MAT_DIALOG_DATA,
-} from '@angular/material/dialog';
+import { MatDialog } from '@angular/material/dialog';
 
 //
 @Component({
@@ -23,8 +13,6 @@ import {
   styleUrls: ['./home.component.css'],
 })
 export class HomeComponent implements OnInit {
-  @ViewChild('card') pRef: ElementRef;
-
   temp;
   data;
   key;
@@ -52,19 +40,25 @@ export class HomeComponent implements OnInit {
       .snapshotChanges()
       .subscribe((items) => {
         this.temp = items;
+
         this.temp.sort(
           (a, b) =>
             a.payload.val().day.localeCompare(b.payload.val().day) ||
             a.payload.val().time.localeCompare(b.payload.val().time)
         );
         this.temp.reverse();
-        this.recent = this.temp[0];
 
-        console.log(this.recent);
+        this.recent = [
+          {
+            key: this.temp[0].payload.key,
+            title: this.temp[0].payload.val().title,
+            content: this.temp[0].payload.val().content,
+            day: this.temp[0].payload.val().day,
+            time: this.temp[0].payload.val().time,
 
-        // for (let t of this.temp) {
-        //   console.log(t.payload.val().title);
-        // }
+            color: this.temp[0].payload.val().color,
+          },
+        ];
       });
   }
 

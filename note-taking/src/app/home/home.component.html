@@ -8,20 +8,21 @@
   <mat-grid-list cols="3" rowHeight="3:2" gutterSize="8px">
     <mat-grid-tile
       class="content-title"
-      [style.background-color]="recent.payload.val().color"
-      >{{ recent.payload.val().content }}
-      <mat-grid-tile-header>{{
-        recent.payload.val().title
-      }}</mat-grid-tile-header>
+      [style.background-color]="r.color"
+      *ngFor="let r of recent"
+    >
+      <div [froalaView]="r.content"></div>
+
+      <mat-grid-tile-header [froalaView]="r.title"></mat-grid-tile-header>
       <mat-grid-tile-footer class="footer">
-        {{ recent.payload.val().day }}
-        {{ recent.payload.val().time }}
+        {{ r.day }}
+        {{ r.time }}
 
         <button
           mat-button
           matTooltip="Set Color"
           class="color-button"
-          (click)="setBackgroundColor(recent.payload.key)"
+          (click)="setBackgroundColor(r.key)"
         >
           <mat-icon class="color-icon">palette</mat-icon>
         </button>
@@ -29,7 +30,7 @@
           mat-button
           class="edit-button"
           matTooltip="Edit Note"
-          (click)="editNote(recent.payload.key)"
+          (click)="editNote(r.key)"
         >
           <mat-icon class="edit-icon">edit</mat-icon>
         </button>
@@ -37,7 +38,7 @@
           mat-button
           matTooltip="Delete Note"
           class="delete-button"
-          (click)="deleteNote(recent.payload.key)"
+          (click)="deleteNote(r.key)"
         >
           <mat-icon class="delete-icon">delete</mat-icon>
         </button>
@@ -53,8 +54,10 @@
       class="content-title"
       *ngFor="let t of temp; let i = index"
       [style.background-color]="t.payload.val().color"
-      >{{ t.payload.val().content }}
-      <mat-grid-tile-header>{{ t.payload.val().title }}</mat-grid-tile-header>
+      ><div [froalaView]="t.payload.val().content"></div>
+      <mat-grid-tile-header
+        [froalaView]="t.payload.val().title"
+      ></mat-grid-tile-header>
       <mat-grid-tile-footer class="footer">
         {{ t.payload.val().day }}
         {{ t.payload.val().time }}
@@ -87,32 +90,3 @@
     </mat-grid-tile>
   </mat-grid-list>
 </ng-template>
-
-<!-- <mat-card class="card" *ngFor="let t of temp; let i = index">
-  <mat-card-title class="card-title">{{
-    t.payload.val().title
-  }}</mat-card-title>
-  <mat-divider class="divider"></mat-divider>
-
-  <mat-card-content class="card-content">
-    <br />
-
-    {{ t.payload.val().content }}
-  </mat-card-content>
-
-  <mat-card-footer class="footer">
-    {{ t.payload.val().day }}
-    {{ t.payload.val().time }}
-
-    <button mat-button class="edit-button" (click)="editNote(t.payload.key)">
-      <mat-icon class="edit-icon">edit</mat-icon>
-    </button>
-    <button
-      mat-button
-      class="delete-button"
-      (click)="deleteNote(t.payload.key)"
-    >
-      <mat-icon class="delete-icon">delete</mat-icon>
-    </button>
-  </mat-card-footer>
-</mat-card> -->

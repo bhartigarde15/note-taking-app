@@ -33,6 +33,7 @@ import { EditNoteComponent } from './edit-note/edit-note.component';
 import { MatRippleModule } from '@angular/material/core';
 import { CommonModule } from '@angular/common';
 import { MatTooltipModule } from '@angular/material/tooltip';
+import { FroalaEditorModule, FroalaViewModule } from 'angular-froala-wysiwyg';
 
 // import {} from '@angular/material/form-field';
 
@@ -69,6 +70,8 @@ import { MatTooltipModule } from '@angular/material/tooltip';
     MatRippleModule,
     CommonModule,
     MatTooltipModule,
+    FroalaEditorModule.forRoot(),
+    FroalaViewModule.forRoot(),
 
     AngularFirestoreModule, // imports firebase/firestore, only needed for database features
     AngularFireModule.initializeApp({

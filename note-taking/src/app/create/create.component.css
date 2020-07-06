@@ -18,3 +18,11 @@
 .on-save:hover {
   box-shadow: 3px 3px 3px grey;
 }
+
+.heading {
+  background-color: white;
+  font-size: 20px;
+  color: black;
+  font-weight: bold;
+  padding-left: 6px;
+}

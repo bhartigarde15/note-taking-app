@@ -6,34 +6,91 @@
   </button>
 
   <h1>Edit Note</h1>
-  <div *ngFor="let t of temp">
+  <div *ngFor="let t of temp" class="entire-div">
     <div *ngIf="t.key === key">
-      <mat-card class="card" [style.background-color]="t.payload.val().color">
-        <mat-card-title
-          contenteditable="true"
-          [textContent]="t.payload.val().title"
-          (input)="title = $event.target.textContent"
-          class="edit-title"
-          ngDefaultControl
+      <form [formGroup]="form1" (ngSubmit)="onUpdateTitle(t.key)">
+        <h2>Edit title:</h2>
+        <div class="froala-editor">
+          <textarea
+            [froalaEditor]
+            formControlName="title"
+            [(froalaModel)]="form1.title"
+            [value]="t.payload.val().title"
+          >
+          </textarea>
+        </div>
+        <br />
+        <button
+          mat-raised-button
+          color="primary"
+          class="update-button"
+          type="submit"
         >
-        </mat-card-title>
+          Update Title
+        </button>
+      </form>
+      <br />
+      <form [formGroup]="form2" (ngSubmit)="onUpdateContent(t.key)">
+        <h2>Edit Content:</h2>
+        <div class="froala-editor">
+          <textarea
+            class="title"
+            [froalaEditor]
+            formControlName="content"
+            [(froalaModel)]="form2.content"
+            [value]="t.payload.val().content"
+          >
+          </textarea>
+
+          <br />
+        </div>
+        <button
+          mat-raised-button
+          color="primary"
+          class="update-button"
+          type="submit"
+        >
+          Update Content
+        </button>
+      </form>
+      <!-- <mat-card class="card" [style.background-color]="t.payload.val().color">
+        <form [formGroup]="form1">
+          <mat-card-title
+            contenteditable="true"
+            [textContent]="t.payload.val().title"
+            (input)="title = $event.target.textContent"
+            [froalaEditor]
+            formControlName="title1"
+            class="edit-title"
+            ngDefaultControl
+          >
+            {{ t.payload.val().title }}
+          </mat-card-title>
+          <button type="submit" (click)="onSubmit()">Submit</button>
+        </form>
 
         <mat-divider></mat-divider>
-        <mat-card-content
-          contenteditable="true"
-          [textContent]="t.payload.val().content"
-          (input)="content = $event.target.textContent"
-          class="edit-title"
-          ngDefaultControl
-        >
-          {{ t.payload.val().content }}
-        </mat-card-content>
+        <form [formGroup]="form2">
+          <mat-card-content
+            contenteditable="true"
+            [textContent]="t.payload.val().content"
+            (input)="content = $event.target.textContent"
+            [froalaEditor]
+            formControlName="content1"
+            class="edit-title"
+            ngDefaultControl
+          >
+            {{ t.payload.val().content }}
+          </mat-card-content>
+          <button type="submit" (click)="onSubmit2()">Submit</button>
+        </form>
+
         <mat-card-footer class="footer">
           <button (click)="onUpdate(t.key)" matTooltip="Save">
             <mat-icon class="save-icon">save</mat-icon>
           </button>
         </mat-card-footer>
-      </mat-card>
+      </mat-card> -->
     </div>
   </div>
 </ng-template>
