@@ -8,23 +8,15 @@
   margin: 8px;
 }
 
-/* .edit-title {
-  background: transparent;
-  background-color: transparent;
-  outline: 0;
-  border-width: 0 0 2px;
-  border-color: blue;
-} */
-
+.update-button:hover {
+  box-shadow: 2px 2px 2px grey;
+}
 .footer {
   text-align: right;
   font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
   justify-content: end;
 }
-button {
-  background-color: transparent;
-  border: none;
-}
+
 button:hover {
   transition: 0.2s;
 }
@@ -68,4 +60,19 @@ h1 {
 .back-button:hover {
   box-shadow: 3px 3px 2px grey;
   transition: 0.2s;
+}
+
+.title {
+  height: 300px;
+  width: 500px;
+
+  margin-left: 6px;
+}
+
+.entire-div {
+  padding-left: 5px;
+}
+
+.froala-editor {
+  width: 700px;
 }

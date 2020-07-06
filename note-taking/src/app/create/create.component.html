@@ -1,3 +1,4 @@
+<h2 class="heading">Create Note</h2>
 <mat-vertical-stepper #stepper>
   <mat-step [stepControl]="firstFormGroup">
     <form [formGroup]="firstFormGroup">
@@ -36,7 +37,12 @@
     <ng-template matStepLabel>Add Note</ng-template>
     <p>Click save to add note</p>
     <div>
-      <button mat-raised-button (click)="stepper.reset()" class="on-hover">
+      <button
+        mat-raised-button
+        (click)="stepper.reset()"
+        class="on-hover"
+        matTooltip="Reset"
+      >
         Reset</button
       >&nbsp;&nbsp;
 
@@ -46,6 +52,7 @@
         color="primary"
         class="on-save"
         (click)="saveNote()"
+        matTooltip="Save Note"
       >
         Save
       </button>
