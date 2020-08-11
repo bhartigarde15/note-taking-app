@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AngularFireDatabase } from '@angular/fire/database';
 import { Observable } from 'rxjs';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { MatStepper } from '@angular/material/stepper';
 
 import { ReactiveFormsModule } from '@angular/forms';
 
@@ -37,7 +38,7 @@ export class CreateComponent implements OnInit {
     });
   }
 
-  saveNote() {
+  saveNote(stepper: MatStepper) {
     // console.log(this.firstFormGroup);
     const itemsRef = this.db.list('notes');
     let date = new Date();
@@ -67,7 +68,11 @@ export class CreateComponent implements OnInit {
       this.isSave = true;
       this.openSnackBar(this.message, this.action);
     } else {
-      this.openSnackBar('Please enter all fields', 'Ok');
+      this.openSnackBar('Please enter all fields', 'Okay');
+      if (this.firstFormGroup.value.header == '') {
+        stepper.previous();
+        stepper.previous();
+      } else stepper.previous();
     }
 
     // console.log(this.secondFormGroup);

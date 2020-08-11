@@ -1,10 +1,19 @@
 import { NoteColorComponent } from './../note-color/note-color.component';
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, Inject } from '@angular/core';
 import { AngularFireDatabase } from '@angular/fire/database';
 import { Router } from '@angular/router';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { ConfirmDialog } from './confirm-dialog';
 
-import { MatDialog } from '@angular/material/dialog';
+import {
+  MatDialog,
+  MatDialogRef,
+  MAT_DIALOG_DATA,
+} from '@angular/material/dialog';
+
+export interface DialogData {
+  keyString: string;
+}
 
 //
 @Component({
@@ -31,7 +40,6 @@ export class HomeComponent implements OnInit {
 
   constructor(
     private db: AngularFireDatabase,
-    private router: Router,
     private _snackBar: MatSnackBar,
     public dialog: MatDialog
   ) {
@@ -79,11 +87,8 @@ export class HomeComponent implements OnInit {
 
   deleteNote(key: string) {
     console.log(key);
-
-    const itemsRef = this.db.list('/notes');
-    itemsRef.remove(key).then(() => {
-      this.hasDeleted = true;
-      this.openSnackBar(this.message, this.action);
+    const dialogRef = this.dialog.open(ConfirmDialog, {
+      data: { keyString: key },
     });
   }
 
