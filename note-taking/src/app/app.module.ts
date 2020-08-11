@@ -18,9 +18,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { AngularFireModule } from '@angular/fire';
-import { AngularFireStorageModule } from '@angular/fire/storage';
-import { AngularFireDatabase } from '@angular/fire/database';
-import { AngularFireDatabaseModule } from '@angular/fire/database';
+
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { MatButtonModule } from '@angular/material/button';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
@@ -34,6 +32,7 @@ import { MatRippleModule } from '@angular/material/core';
 import { CommonModule } from '@angular/common';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { FroalaEditorModule, FroalaViewModule } from 'angular-froala-wysiwyg';
+import { ConfirmDialog } from './home/confirm-dialog';
 
 // import {} from '@angular/material/form-field';
 
@@ -42,7 +41,7 @@ import { FroalaEditorModule, FroalaViewModule } from 'angular-froala-wysiwyg';
     AppComponent,
     HomeComponent,
     CreateComponent,
-
+    ConfirmDialog,
     NoteColorComponent,
     EditNoteComponent,
   ],
